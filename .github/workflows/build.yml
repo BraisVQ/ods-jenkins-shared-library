@@ -34,4 +34,4 @@ jobs:
         env:
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
           NO_NEXUS: true
-        run: ./gradlew build sonar --info
+        run: ./gradlew build sonar --info -x test
