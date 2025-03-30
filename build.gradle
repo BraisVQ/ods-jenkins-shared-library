@@ -2,6 +2,7 @@ plugins {
     id 'jacoco'
     id 'groovy'
     id 'codenarc'
+    id "org.sonarqube" version "6.0.1.5171"
 }
 
 group "org.ods"
@@ -12,6 +13,14 @@ ext {
     nexus_user = project.findProperty('nexus_user') ?: System.getenv('NEXUS_USERNAME')
     nexus_pw = project.findProperty('nexus_pw') ?: System.getenv('NEXUS_PASSWORD')
     no_nexus = (project.findProperty('no_nexus') ?: System.getenv('NO_NEXUS') ?: false).toBoolean()
+}
+
+sonar {
+  properties {
+    property "sonar.projectKey", "bvq-test_ods-jenkins-shared-library"
+    property "sonar.organization", "bvq-test"
+    property "sonar.host.url", "https://sonarcloud.io"
+  }
 }
 
 repositories {
